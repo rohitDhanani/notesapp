@@ -5,18 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body{
-            text-align: center;
-        }
-    </style>
+   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <!-- <header id="navBar"> -->
+        <nav>
+            <label class="logo">Notes</label>
+            <ul>
+                
+                <li>Home</li>
+                <li>About</li>
+            </ul>
+        </nav>
+    <!-- </header> -->
+
+
+
+
     <h1>Notes</h1>
     <section id="createNote">
-        <label for="tittle">Name</label>
-        <input type="text" id="tittle">
-        <button id="addbtn">Add</button>
+    <div id="createNoteContainer">
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="Title">
+
+        <!-- <label for="description">Description</label> -->
+        <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+        
+        <div>
+
+            <label for="dueDate">Due Date:</label>
+            <input type="date" name="" id="dueDate">
+            <label for="importance">Importance</label>
+            <select name="" id="importance">
+                <option value="veryUrgent">veryUrgent</option>
+                <option value="Urgent">Urgent</option>
+                <option value="normal">Normal</option>
+            </select>
+        </div>
+            <button id="addbtn">Add</button>
+    </div>
     </section>
     <main>
         <h3>your notes</h3>

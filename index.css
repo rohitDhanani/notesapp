@@ -1,0 +1,78 @@
+body{
+    background-color: black;
+    color: aliceblue;
+}
+.box{
+    border: 2px solid rgb(239, 237, 237);
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 15px;
+    /* background-color: black;
+    color: white; */
+    box-shadow: 0.5px 0.5px 7px rgb(231, 36, 36);
+}
+
+#addbtn{
+    cursor: pointer;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    padding: 5px;
+    margin-top: 10px; ;
+    width: 350px;
+}
+ul{
+    float: right;
+    margin-right: 750px;
+    margin-top: 0px;
+}
+li{
+    display: inline-block;
+    margin: 0px 8px;
+    list-style: none;
+    cursor: pointer;
+    
+    line-height: 80px;
+    font-size: 18px;
+    
+}
+nav{
+    border: 2px solid red;
+    height: 80px;
+    width: 100%;
+    background-color: darkblue;
+}
+.logo{
+    line-height: 80px;
+    padding: 10px;
+    font-size: 35px;
+    font-weight: 500;
+}
+
+#createNoteContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#title{
+    
+    width: 350px;
+    border-radius: 5px;
+    height: 30px;
+    text-align: center;
+}
+
+#description{
+    /* display: block; */
+    border-radius: 5px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+#createNote{
+    /* visibility: hidden; */
+    /* display: none; */
+}
