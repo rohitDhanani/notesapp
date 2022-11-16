@@ -6,6 +6,11 @@ const dueDate=document.getElementById("dueDate")
 const importance=document.getElementById("importance")
 
 
+const create=document.getElementById("create")
+const closebtn=document.getElementById("close")
+const createNotePopUP = document.getElementById("createNotePopUP")
+
+
 const getParsedNotesFromSessionStorage=()=>{
     let notes=sessionStorage.getItem("notes")
     if(notes){
@@ -60,6 +65,7 @@ const storeNotes=(title,description,dueDate,importance)=>{
 const createDeleteBtnAndEvent=()=>{
    const deleteBtn= document.createElement("button");
    deleteBtn.innerText="Delete";
+   deleteBtn.classList.add("deleteBtn")
    deleteBtn.addEventListener("click",()=>{
     const removeElement=event.target.parentElement
     const removeNoteFromSession=removeElement.querySelector('p').innerText;
@@ -118,5 +124,17 @@ addbtn.addEventListener("click",()=>{
     console.log(title.value.toUpperCase());
     console.log(importance.value);
     console.log(dueDate.value);
+    createNotePopUP.classList.remove("active");
     title.value="";
+    description.value="";
 });
+
+create.addEventListener("click",()=>{
+    
+
+    createNotePopUP.classList.add("active");
+})
+closebtn.addEventListener("click",()=>{
+    
+    createNotePopUP.classList.remove("active");
+})
