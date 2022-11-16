@@ -4,11 +4,11 @@ const sectionDisplayNotes=document.getElementById("displayNotes");
 const description=document.getElementById("description")
 const dueDate=document.getElementById("dueDate")
 const importance=document.getElementById("importance")
-
-
 const create=document.getElementById("create")
 const closebtn=document.getElementById("close")
 const createNotePopUP = document.getElementById("createNotePopUP")
+
+const nothingToPreviewText=document.getElementById("nothingToPreview")
 
 
 const getParsedNotesFromSessionStorage=()=>{
@@ -20,7 +20,9 @@ const getParsedNotesFromSessionStorage=()=>{
 }
 const showNotesFromSessionStorage=()=>{
     let notes= getParsedNotesFromSessionStorage();
-    if(notes){
+    if(notes.length){
+        
+        nothingToPreviewText.classList.add("notActive");
         notes.forEach(note => {
             
             addNote(note.notetitle,note.notedescription,note.notedueDate,note.noteimportance);
@@ -72,7 +74,11 @@ const createDeleteBtnAndEvent=()=>{
     // console.log(removeNoteFromSession);
     deleteFromSessionStorage(removeNoteFromSession);
 
-    removeElement.remove();
+    removeElement.remove();  
+    let notes=getParsedNotesFromSessionStorage();
+    if(!notes.length){
+        nothingToPreviewText.classList.remove("notActive");
+    } 
    })
 
    return deleteBtn;
@@ -125,6 +131,8 @@ addbtn.addEventListener("click",()=>{
     console.log(importance.value);
     console.log(dueDate.value);
     createNotePopUP.classList.remove("active");
+    nothingToPreviewText.classList.add("notActive");
+    
     title.value="";
     description.value="";
 });
