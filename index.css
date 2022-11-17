@@ -32,6 +32,10 @@ body{
     transition: width 200ms ease-in-out;
 }
 
+#addbtn:hover{
+    background-color: rgb(11, 105, 11);
+}
+
 #addbtn{
     cursor: pointer;
     border-radius: 5px;
@@ -198,6 +202,9 @@ nav{
     border: none;
     margin: 2px;
 }
+.deleteBtn:hover{
+    background-color: rgb(134, 5, 18);
+}
 .editBtn{
     background-color: rgb(8, 69, 236);
     color: white;
@@ -207,6 +214,9 @@ nav{
     border: none;
     margin: 2px;
 }
+.editBtn:hover{
+    background-color: rgb(2, 32, 116);
+}
 .viewBtn{
     background-color: rgb(11, 105, 11);
     color: white;
@@ -215,6 +225,9 @@ nav{
     cursor: pointer;
     border: none;
     margin: 2px;
+}
+.viewBtn:hover{
+    background-color: rgb(8, 169, 8);
 }
 
 #yourNotes{
