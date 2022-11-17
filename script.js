@@ -30,7 +30,7 @@ const showNotesFromSessionStorage=()=>{
         nothingToPreviewText.classList.add("notActive");
         notes.forEach(note => {
             
-            addNote(note.notetitle,note.notedescription,note.notedueDate,note.noteimportance);
+            addNote(note.notetitle,note.notedueDate,note.noteimportance);
         });
     }
 }
@@ -143,10 +143,10 @@ const createParagraphAndInsertValue=(value)=>{
     return p;
 }
 
-const createDivTagAndInsertElements=(titleTag,descriptionTag,dueDateTag,importanceTag,deleteBtn,editBtn,viewBtn)=>{
+const createDivTagAndInsertElements=(titleTag,dueDateTag,importanceTag,deleteBtn,editBtn,viewBtn)=>{
     let div=document.createElement("div")
     div.appendChild(titleTag)
-    div.appendChild(descriptionTag)
+    // div.appendChild(descriptionTag)
     div.appendChild(dueDateTag)
     div.appendChild(importanceTag)
     div.appendChild(viewBtn)
@@ -155,7 +155,7 @@ const createDivTagAndInsertElements=(titleTag,descriptionTag,dueDateTag,importan
     return div;
 }
 
-const addNote=(title,description,dueDate,importance)=>{  
+const addNote=(title,dueDate,importance)=>{  
     if(title.length){
     // const note=document.createElement("p");
     // note.innerText=value;
@@ -169,7 +169,7 @@ const addNote=(title,description,dueDate,importance)=>{
     const deleteBtn=createDeleteBtnAndEvent();
     const editBtn=createEditBtnAndEvent();
     const viewBtn=createViewBtnAndEvent();
-    const wrapperDiv=createDivTagAndInsertElements(titleTag,descriptionTag,dueDateTag,importanceTag,deleteBtn,editBtn,viewBtn);
+    const wrapperDiv=createDivTagAndInsertElements(titleTag,dueDateTag,importanceTag,deleteBtn,editBtn,viewBtn);
     // wrapperDiv.appendChild(titleTag)
     // wrapperDiv.appendChild(deleteBtn)
     wrapperDiv.classList.add("box")
@@ -182,7 +182,7 @@ addbtn.addEventListener("click",()=>{
     
     // storeNotes(title.value);
     storeNotes(title.value.toUpperCase(),description.value,dueDate.value,importance.value);
-    addNote(title.value.toUpperCase(),description.value,dueDate.value,importance.value);
+    addNote(title.value.toUpperCase(),dueDate.value,importance.value);
     createNotePopUP.classList.remove("active");
     nothingToPreviewText.classList.add("notActive");
     
