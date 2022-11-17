@@ -44,9 +44,10 @@ body{
     color: white;
 }
 ul{
-    float: right;
-    margin-right: 65rem;
+    /* float: right; */
+    margin-left: 0.1rem;
     margin-top: 0px;
+    display: inline-block;
 }
 li{
     display: inline-block;
@@ -117,10 +118,24 @@ nav{
     box-shadow: 3px 2px 3px 0.2px yellow;
     transition: opacity 200ms ease-in-out ;
     /* background-color: #a33c91; */
-    background: rgba(227, 88, 193, 0.826);
+    /* background: rgba(227, 88, 193, 0.826); */
     background: linear-gradient(to right,#2b5a5c,#0b404c);
     padding: 20px;
     border-radius: 15px;
+}
+#viewNotePopUP{
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    box-shadow: 3px 2px 3px 0.2px rgb(32, 69, 99);
+    transition: opacity 200ms ease-in-out ;
+    background: linear-gradient(to right,#2b5a5c,#0b404c);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+
 }
 .notActive{
     opacity: 0;
@@ -132,6 +147,20 @@ nav{
     display: block;
 }
 #close{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 30px;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 15px;
+    justify-content: center;
+    cursor: pointer;
+    background-color: red;
+}
+#viewClose{
     position: absolute;
     right: 5px;
     top: 5px;
@@ -161,6 +190,26 @@ nav{
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
+    margin: 2px;
+}
+.editBtn{
+    background-color: rgb(8, 69, 236);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin: 2px;
+}
+.viewBtn{
+    background-color: rgb(11, 105, 11);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin: 2px;
 }
 
 #yourNotes{

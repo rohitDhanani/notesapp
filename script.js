@@ -6,9 +6,14 @@ const dueDate=document.getElementById("dueDate")
 const importance=document.getElementById("importance")
 const create=document.getElementById("create")
 const closebtn=document.getElementById("close")
+const viewClosebtn=document.getElementById("viewClose")
 const createNotePopUP = document.getElementById("createNotePopUP")
-
 const nothingToPreviewText=document.getElementById("nothingToPreview")
+const viewNotePopUP = document.getElementById("viewNotePopUP")
+const viewNoteTitle=document.getElementById("viewNoteTitle")
+const viewNoteDescription=document.getElementById("viewNoteDescription")
+const viewNoteDueDate=document.getElementById("viewNoteDueDate")
+const viewNoteImportance=document.getElementById("viewNoteImportance")
 
 
 const getParsedNotesFromSessionStorage=()=>{
@@ -64,6 +69,54 @@ const storeNotes=(title,description,dueDate,importance)=>{
 
     }
 }
+const createEditBtnAndEvent=()=>{
+    const editBtn= document.createElement("button");
+    editBtn.innerText="Edit";
+    editBtn.classList.add("editBtn")
+    editBtn.addEventListener("click",()=>{
+        
+     const editElement=event.target.parentElement
+     const editNoteTitle=editElement.querySelector('p').innerText;
+     let notes=getParsedNotesFromSessionStorage();
+     let noteToBeEdited=notes.filter((el)=>{return el.notetitle==editNoteTitle});
+    //  console.log(noteToBeEdited);
+     title.value=noteToBeEdited[0].notetitle;
+     description.value=noteToBeEdited[0].notedescription;
+     dueDate.value=noteToBeEdited[0].notedueDate;
+     importance.value=noteToBeEdited[0].noteimportance;
+     createNotePopUP.classList.add("active");
+     deleteFromSessionStorage(editNoteTitle);
+      editElement.remove()
+
+     // console.log(removeNoteFromSession);
+    //  editFromSessionStorage(editNoteFromSession);
+            });
+            return editBtn;
+    
+    }
+const createViewBtnAndEvent=()=>{
+        const viewBtn= document.createElement("button");
+        viewBtn.innerText="View";
+        viewBtn.classList.add("viewBtn")
+        viewBtn.addEventListener("click",()=>{
+            
+         const viewElement=event.target.parentElement
+         const NoteTitle=viewElement.querySelector('p').innerText;
+         let notes=getParsedNotesFromSessionStorage();
+         let noteToBeViewed=notes.filter((el)=>{return el.notetitle==NoteTitle});
+        
+        viewNoteTitle.innerText=noteToBeViewed[0].notetitle;
+        viewNoteDescription.innerText=noteToBeViewed[0].notedescription;
+        viewNoteDueDate.innerText=noteToBeViewed[0].notedueDate;
+        viewNoteImportance.innerText=noteToBeViewed[0].noteimportance;
+         viewNotePopUP.classList.add("active");
+                });
+                return viewBtn;
+        
+        }
+
+
+
 const createDeleteBtnAndEvent=()=>{
    const deleteBtn= document.createElement("button");
    deleteBtn.innerText="Delete";
@@ -90,12 +143,14 @@ const createParagraphAndInsertValue=(value)=>{
     return p;
 }
 
-const createDivTagAndInsertElements=(titleTag,descriptionTag,dueDateTag,importanceTag,deleteBtn)=>{
+const createDivTagAndInsertElements=(titleTag,descriptionTag,dueDateTag,importanceTag,deleteBtn,editBtn,viewBtn)=>{
     let div=document.createElement("div")
     div.appendChild(titleTag)
     div.appendChild(descriptionTag)
     div.appendChild(dueDateTag)
     div.appendChild(importanceTag)
+    div.appendChild(viewBtn)
+    div.appendChild(editBtn)
     div.appendChild(deleteBtn)
     return div;
 }
@@ -112,7 +167,9 @@ const addNote=(title,description,dueDate,importance)=>{
 
     // const wrapperDiv=document.createElement("div");
     const deleteBtn=createDeleteBtnAndEvent();
-    const wrapperDiv=createDivTagAndInsertElements(titleTag,descriptionTag,dueDateTag,importanceTag,deleteBtn);
+    const editBtn=createEditBtnAndEvent();
+    const viewBtn=createViewBtnAndEvent();
+    const wrapperDiv=createDivTagAndInsertElements(titleTag,descriptionTag,dueDateTag,importanceTag,deleteBtn,editBtn,viewBtn);
     // wrapperDiv.appendChild(titleTag)
     // wrapperDiv.appendChild(deleteBtn)
     wrapperDiv.classList.add("box")
@@ -126,16 +183,19 @@ addbtn.addEventListener("click",()=>{
     // storeNotes(title.value);
     storeNotes(title.value.toUpperCase(),description.value,dueDate.value,importance.value);
     addNote(title.value.toUpperCase(),description.value,dueDate.value,importance.value);
-
-    console.log(title.value.toUpperCase());
-    console.log(importance.value);
-    console.log(dueDate.value);
     createNotePopUP.classList.remove("active");
     nothingToPreviewText.classList.add("notActive");
     
     title.value="";
     description.value="";
 });
+// document.addEventListener("click",(event)=>{
+//     if(event.target.innerText=="Delete"){
+//         console.log("clicked on delete btn");
+//         return;
+//     }
+//     console.log("clicked on document",event.target);
+// })
 
 create.addEventListener("click",()=>{
     
@@ -145,4 +205,8 @@ create.addEventListener("click",()=>{
 closebtn.addEventListener("click",()=>{
     
     createNotePopUP.classList.remove("active");
+})
+viewClosebtn.addEventListener("click",()=>{
+    
+    viewNotePopUP.classList.remove("active");
 })
