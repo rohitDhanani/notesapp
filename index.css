@@ -183,13 +183,18 @@ nav{
     
 }
 #create{
-    margin: 1.5rem;
+    /* margin: 1.5rem; */
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 50%;
     background-color: rgb(11, 105, 11);
     color: white;
     cursor: pointer;
     border: none;
+    height: 6rem;
+    width: 6rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
     
 }
 
@@ -235,3 +240,4 @@ nav{
     text-align: center;
     line-height: 2.5rem;
 }
+
