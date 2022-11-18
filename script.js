@@ -15,6 +15,8 @@ const viewNoteDescription=document.getElementById("viewNoteDescription")
 const viewNoteDueDate=document.getElementById("viewNoteDueDate")
 const viewNoteImportance=document.getElementById("viewNoteImportance")
 
+const searchBar=document.getElementById("searchBar")
+
 
 const getParsedNotesFromSessionStorage=()=>{
     let notes=sessionStorage.getItem("notes")
@@ -209,4 +211,19 @@ closebtn.addEventListener("click",()=>{
 viewClosebtn.addEventListener("click",()=>{
     
     viewNotePopUP.classList.remove("active");
+})
+
+searchBar.addEventListener("input",()=>{
+    let searchText=searchBar.value.toLowerCase();
+    let box=document.querySelectorAll(".box")
+
+    box.forEach((element)=>{
+        let title=element.querySelector("p").innerText.toLowerCase();
+        if(title.includes(searchText)){
+            element.style.display=""
+        }else{
+            element.style.display="none"
+        }
+    })
+    
 })

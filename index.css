@@ -241,3 +241,15 @@ nav{
     line-height: 2.5rem;
 }
 
+#searchBar{
+    float: right;
+    margin-top: 1.2rem;
+    margin-right: 3rem;
+    padding: 5px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    
+}
+
+
